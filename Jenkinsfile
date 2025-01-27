@@ -16,6 +16,15 @@ pipeline {
             }
         }
 
+        stage('Unit Test') {
+            steps {
+                script {
+                    // Menjalankan unit test menggunakan Go (misalnya menggunakan 'go test')
+                    sh 'go test -v ./...'
+                }
+            }
+        }
+
         stage('Build Docker Image') {
             steps {
                 script {
