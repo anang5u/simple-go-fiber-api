@@ -4,7 +4,7 @@ pipeline {
     environment {
         DOCKER_IMAGE_NAME = 'go-fiber-app'
         DOCKER_TAG = 'latest'
-        REGISTRY = 'https://192.168.1.21'  // Ganti dengan URL registry jika menggunakan selain Docker Hub
+        REGISTRY = 'registry.sintek.com'  // Ganti dengan URL registry jika menggunakan selain Docker Hub
         DOCKER_CREDENTIALS = 'docker-registry-credentials' // Ganti dengan credentials ID di Jenkins
     }
 
