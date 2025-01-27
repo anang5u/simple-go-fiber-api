@@ -19,7 +19,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    // Membangun Docker image dari Dockerfile
+                    // Build Docker image dari Dockerfile
                     sh "docker build -t ${REGISTRY}/${DOCKER_IMAGE_NAME}:${DOCKER_TAG} ."
                 }
             }
@@ -37,14 +37,14 @@ pipeline {
             }
         }
 
-        //stage('Push Docker Image') {
-        //    steps {
-        //        script {
-        //            // Push Docker image ke registry
-        //            sh "docker push https://${REGISTRY}/${DOCKER_IMAGE_NAME}:${DOCKER_TAG}"
-        //        }
-        //    }
-        //}
+        stage('Push Docker Image') {
+            steps {
+                script {
+                    // Push Docker image ke registry
+                    sh "docker push https://${REGISTRY}/${DOCKER_IMAGE_NAME}:${DOCKER_TAG}"
+                }
+            }
+        }
 
         stage('Clean Up') {
             steps {
