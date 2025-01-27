@@ -59,7 +59,11 @@ pipeline {
     post {
         always {
             // Menjaga Jenkins build tetap bersih, menghapus Docker images yang tidak diperlukan
-            cleanWs()
+            // menggunakan plugin Workspace Cleanup Plugin
+            //cleanWs()
+
+            // Membersihkan file yang ada di workspace secara manual jika plugin cleanWs tidak ada
+            sh 'rm -rf *'
         }
     }
 }
