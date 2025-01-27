@@ -55,10 +55,10 @@ pipeline {
         }
     }
 
-    post {
-        always {
-            // Menjaga Jenkins build tetap bersih, menghapus Docker images yang tidak diperlukan
-            cleanWs()
-        }
-    }
+    //post {
+    //    always {
+    //        // Menjaga Jenkins build tetap bersih, menghapus Docker images yang tidak diperlukan
+    //        cleanWs()
+    //    }
+    //}
 }
