@@ -19,8 +19,10 @@ pipeline {
         stage('Unit Test') {
             steps {
                 script {
-                    // Menjalankan unit test menggunakan Go (misalnya menggunakan 'go test')
-                    sh 'go test -v ./...'
+                    // Jalankan unit test di dalam container Docker golang
+                    sh '''
+                    docker run --rm -v $(pwd):/workspace -w /workspace golang:1.23-alpine go test -v ./...
+                    '''
                 }
             }
         }
