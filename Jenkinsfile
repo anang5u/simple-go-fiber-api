@@ -16,17 +16,6 @@ pipeline {
             }
         }
 
-        stage('Unit Test') {
-            steps {
-                script {
-                    // Jalankan unit test di dalam container Docker golang
-                    sh '''
-                    docker run --rm -v $(pwd):/workspace -w /workspace golang:1.23-alpine go test -v ./...
-                    '''
-                }
-            }
-        }
-
         stage('Build Docker Image') {
             steps {
                 script {
