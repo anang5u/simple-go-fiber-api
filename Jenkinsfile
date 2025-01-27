@@ -28,8 +28,9 @@ pipeline {
         stage('Login to Docker Registry') {
             steps {
                 script {
-                    // Login ke Docker registry (menggunakan credentials Jenkins)
-                    docker.withCredentials([usernamePassword(credentialsId: DOCKER_CREDENTIALS, usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+                    // Menggunakan dengan kredensial untuk login ke Docker registry
+                    withCredentials([usernamePassword(credentialsId: DOCKER_CREDENTIALS, usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+                        // Melakukan login menggunakan username dan password dari kredensial
                         sh "echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin ${REGISTRY}"
                     }
                 }
